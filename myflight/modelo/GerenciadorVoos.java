@@ -3,19 +3,31 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GerenciadorVoos {
-    private ArrayList <Voo> voo;
+    private ArrayList <Voo> voos;
     public void AdicionarVoo (Voo voo) {
-        this.voo.add(voo); 
+        this.voos.add(voo); 
     }
+
+    public GerenciadorVoos() {
+        this.voos = new ArrayList<>();
+    }
+
     public ArrayList<Voo> ListarTodos () {
-        return voo;
+        return voos;
     }
+    
     public ArrayList<Voo> BuscarData (LocalDate data) {
-        for(Voo v: voo) {
-            if (v.getData().equals(data)) {
-                return voo; 
+        ArrayList<Voo> voosEncontrados = new ArrayList<>();
+            for(Voo v : voos) {
+            if (v.getDatahora().toLocalDate().equals(data)) {
+                voosEncontrados.add(v); 
             }
         }
-        return null;
+        if (voosEncontrados.isEmpty()) {
+            return null;
+        } else {
+            return voosEncontrados;
+        }
     }
 }
+

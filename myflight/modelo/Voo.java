@@ -47,15 +47,10 @@ public class Voo {
 		this.status = novo;
 	}
 
-    public Object getData() {
-        throw new UnsupportedOperationException("Unimplemented method 'getData'");
-    }
+	@Override
+    public String toString() {
+        return "Voo [" + rota.getOrigem().getCodigo() + " -> " + rota.getDestino().getCodigo() + 
+               " | Data: " + datahora + " | Duração: " + duracao.toMinutes() + "min]"; 
+	}
 
-    public static void add(Voo voo) {
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
-    }
-
-    public static boolean isEmpty() {
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
-    }
 }
