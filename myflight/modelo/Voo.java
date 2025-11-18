@@ -17,11 +17,14 @@ public class Voo {
 		this.rota = rota;
 		this.datahora = datahora;
 		this.duracao = duracao;
-		this.status = Status.CONFIRMADO; // default é confirmado
+		this.status = Status.CONFIRMADO; 
 	}
 	
-	public Voo(String codigo, Rota rota2, LocalDate data) {
-		throw new UnsupportedOperationException("Unimplemented method 'Voo'");
+	public Voo(Rota rota, Duration duracao) {
+    	this.datahora = LocalDateTime.of(2016, 8, 12, 12, 0);
+    	this.rota = rota;
+    	this.duracao = duracao;
+    	this.status = Status.CONFIRMADO;
 	}
 
 	public Rota getRota() {
