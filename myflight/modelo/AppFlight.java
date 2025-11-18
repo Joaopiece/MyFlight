@@ -35,6 +35,17 @@ public class AppFlight {
         LocalDateTime dataVoo2 = LocalDateTime.of(2025, 12, 31, 20, 00);
         Duration duracaoVoo2 = Duration.ofMinutes(55);
         gerenciador.criarVoo("AD", "GRU", "SDU", dataVoo2, duracaoVoo2);
+
+        System.out.println("\n--- Testando a Fórmula de Haversine ---");
+
+        Geo poa = new Geo(-29.9939, -51.1714); 
+        Geo gru = new Geo(-23.4356, -46.4731);
+
+        double d1 = Geo.distancia(poa, gru);
+        System.out.printf("Distância (Estático) POA -> GRU: %.2f km\n", d1);
+
+        double d2 = poa.distancia(gru);
+        System.out.printf("Distância (Instância) POA -> GRU: %.2f km\n", d2);
         
     }
 }
