@@ -46,6 +46,14 @@ public class AppFlight {
 
         double d2 = poa.distancia(gru);
         System.out.printf("Distância (Instância) POA -> GRU: %.2f km\n", d2);
+
+        gerenciador.cadastrarAeronave("PR-GOL", "Boeing 737 MAX"); 
+        gerenciador.cadastrarAeronave("PR-AJA", "Airbus A320neo"); 
+
+        System.out.println("\n--- Teste de Contagem de Aeronaves ---");
+        int total = Aeronave.totalObjetos();
+        
+        System.out.println("Total de Aeronaves criadas: " + total);
         
     }
 }
