@@ -32,13 +32,30 @@ public class GerenciadorMyFlight {
         aeroportos.add(new Aeroporto(codigo, nome, new Geo(latitude, longitude)));
     }
 
-    public void cadastrarRota(String cia, String origem, String destino, String aeronave) {
-        rotas.add(new Rota(cia, origem, destino, aeronave)); 
+    public void cadastrarRota(String codCia, String codOrigem, String codDestino, String codAeronave) {
+        CiaAerea cia = buscarCiaAerea(codCia);
+        Aeroporto origem = buscarAeroporto(codOrigem);
+        Aeroporto destino = buscarAeroporto(codDestino);
+        Aeronave aeronave = buscarAeronave(codAeronave);
+        
+        if (cia != null && origem != null && destino != null && aeronave != null) {
+            Rota rota = new Rota(cia, origem, destino, aeronave);
+            rotas.add(rota);
+            System.out.println("INFO: Rota cadastrada com sucesso!");
+        } else {
+            System.out.println("ERRO: Não foi possível cadastrar a rota. Verifique os códigos informados.");
+        }
     }
 
-    public void criarVoo(Rota rota, LocalDateTime datahora, Duration duracao) {
-        voos.add(new Voo(rota, datahora, duracao)); 
-        System.out.println("INFO: Voo criado com sucesso!");
+    public void criarVoo(String codCia, String codOrigem, String codDestino, LocalDateTime dataHora, Duration duracao) {
+        Rota rota = buscarRota(codCia, codOrigem, codDestino);
+        if (rota != null) {
+            Voo voo = new Voo(rota, dataHora, duracao);
+            voos.add(voo);
+            System.out.println("INFO: Voo criado com sucesso!");
+        } else {
+            System.out.println("ERRO: Não foi possível criar o voo. Verifique os códigos informados.");
+        }
     }
     
     public CiaAerea buscarCiaAerea(String codigo) {
@@ -76,9 +93,5 @@ public class GerenciadorMyFlight {
     public void listarTodasAsRotas() {
         System.out.println("\n--- LISTA DE TODAS AS ROTAS ---");
         rotas.forEach(System.out::println);
-    }
-
-    public void criarVoo(String string, String string2, String string3, LocalDateTime dataVoo1, Duration duracaoVoo1) {
-        throw new UnsupportedOperationException("Unimplemented method 'criarVoo'");
     }
 }
