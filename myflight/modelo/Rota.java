@@ -2,7 +2,7 @@ package pucrs.myflight.modelo;
 
 import java.time.LocalDateTime;
 
-public class Rota {
+public class Rota implements Comparable<Rota> {
 	private CiaAerea cia;
 	private Aeroporto origem;
 	private Aeroporto destino;
@@ -29,5 +29,10 @@ public class Rota {
 	
 	public Aeronave getAeronave() {
 		return aeronave;
+	}
+
+	@Override
+	public int compareTo(Rota outra) {
+		return this.cia.getNome().compareTo(outra.cia.getNome());
 	}
 }
